@@ -11,7 +11,6 @@ using itgMobile.Core;
 using System.IO;
 using System.Xml.Serialization;
 
-
 namespace itgMobile.ViewModels
 {
 	public class ConsultaViewModel : BaseViewModel
@@ -60,43 +59,51 @@ namespace itgMobile.ViewModels
 
 		private async void Lista()
 		{
-			if (await this._messageService.ShowAsync (
+            if (await this._messageService.ShowAsync (
 				"Confirmação:"
 				,"Gostaria de listar pagamentos?")) 
 			{
-				var viewModel = new ListaViewModel ();
-				viewModel.Comissoes = getCmsPorData (_cnpj, _dataInicial, _dataFinal);
+                IsBusy = true;
+                var viewModel = new ListaViewModel ();
+				viewModel.Comissoes = getCmsPorData ();
 				var view = new ListaView ();
 				view.BindingContext = viewModel;
-				await this._navigationService.NavigateToLista(view);
-			}
+                await this._navigationService.NavigateToLista(view);
+               IsBusy = false;
+            }
+        }
 
-		}
-
-		private async void AbrirPdf()
+        private async void AbrirPdf()
 		{
-			if (await this._messageService.ShowAsync (
+            if (await this._messageService.ShowAsync (
 					"Confirmação:"
 					,"Gostaria de abrir o relatório em PDF?")) 
 			{
-				
-				await this._navigationService.NavigateToAbrirPdf();
-			}
-		}
+                IsBusy = true;
+                var viewModel = new AbrirPdfViewModel ();
+                viewModel.Status = tryOpenPdf();
+                string msg = ItgWebService.itgEspecifico.errorMsg;
+                viewModel.Message = (!string.IsNullOrEmpty(msg)) ? msg : "Operação executada com sucesso.";
+                var view = new AbrirPdfView();
+                view.BindingContext = viewModel;
+				await this._navigationService.NavigateToAbrirPdf(view);
+                IsBusy = false;
+            }
+        }
 
-		public List<ComissaoInfo> getCmsPorData(string CNPJ, DateTime dtInicial, DateTime dtFinal)
+        private List<ComissaoInfo> getCmsPorData()
 		{
 			CmsCore obj = new CmsCore();
 
 			XmlUtil objXml = new XmlUtil();
 
-			objXml.XmlStringBase = objXml.LoadXmlEmbedded ("itgMobile.Resource.input_8_1.xml");
-			//objXml.XmlStringBase = Resources.itgMobileResource.input_8_1;
+            //objXml.XmlStringBase = objXml.LoadXmlEmbedded ("itgMobile.Resource.input_8_1.xml");
+            objXml.XmlStringBase = Resource.itgMobileResource.input_8_1;
 
 			//Define parametros de input no XML
-			objXml.setParamValue("@cnpj", CNPJ);
-			objXml.setParamValue("@dtInicial", dtInicial);
-			objXml.setParamValue("@dtFinal", dtFinal);
+			objXml.setParamValue("@cnpj", _cnpj);
+			objXml.setParamValue("@dtInicial", _dataInicial);
+			objXml.setParamValue("@dtFinal", _dataFinal);
 
 			string xmlString = obj.getCmsPagasPorData(objXml.XmlString);
 
@@ -105,19 +112,19 @@ namespace itgMobile.ViewModels
 			return comissoes;
 		}
 
-		public bool abriPdf(string CNPJ, DateTime dtInicial, DateTime dtFinal)
+		private bool tryOpenPdf()
 		{
 			CmsCore obj = new CmsCore();
 
 			XmlUtil objXml = new XmlUtil();
 
-			objXml.XmlStringBase = objXml.LoadXmlEmbedded ("itgMobile.Resource.input_8_4.xml");
-			//objXml.XmlStringBase = Resources.itgMobileResource.input_8_4;
+			//objXml.XmlStringBase = objXml.LoadXmlEmbedded ("itgMobile.Resource.input_8_4.xml");
+			objXml.XmlStringBase = Resource.itgMobileResource.input_8_4;
 
 			//Define parametros de input no XML
-			objXml.setParamValue("@cnpj", CNPJ);
-			objXml.setParamValue("@dtInicial", dtInicial);
-			objXml.setParamValue("@dtFinal", dtFinal);
+			objXml.setParamValue("@cnpj", _cnpj);
+			objXml.setParamValue("@dtInicial", _dataInicial);
+			objXml.setParamValue("@dtFinal", _dataFinal);
 
 			return obj.abriPdf(objXml.XmlString);
 		}
@@ -135,7 +142,7 @@ namespace itgMobile.ViewModels
 
 				Stream stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(xmlString));
 				//Define o tipo de serialização
-				XmlSerializer cmsSerializer = new XmlSerializer(typeof(ComissaoInfo));
+				XmlSerializer cmsSerializer = new XmlSerializer(typeof(ComissoesList));
 				//Transforma o XML e List<ComissaoInfo> e atribui o valor a comissoes
 				comissoes = (ComissoesList)cmsSerializer.Deserialize(stream);
 

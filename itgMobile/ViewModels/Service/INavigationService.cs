@@ -9,7 +9,7 @@ namespace itgMobile.ViewModels.Services
 		Task NavigateToHome();
 		Task NavigateToConsulta();
 		Task NavigateToLista(ListaView view);
-		Task NavigateToAbrirPdf();
+		Task NavigateToAbrirPdf(AbrirPdfView view);
 	}
 }
 

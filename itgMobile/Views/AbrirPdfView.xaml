@@ -4,5 +4,6 @@
 	x:Class="itgMobile.Views.AbrirPdfView"
 	Title="Abri PDF">
 	<ContentPage.Content>
+    <Label Text="{Binding Message}" />
 	</ContentPage.Content>
 </ContentPage>

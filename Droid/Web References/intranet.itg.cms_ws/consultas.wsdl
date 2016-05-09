@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="ConsultaConsolidadaValoresPagar">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametros" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaConsolidadaValoresPagarResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaConsolidadaValoresPagarResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RelatorioComissaoPagarDetalhePDF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametros" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RelatorioComissaoPagarDetalhePDFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RelatorioComissaoPagarDetalhePDFResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaDetalheMovimentoPago">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametros" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaDetalheMovimentoPagoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaDetalheMovimentoPagoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaDominios">
+        <s:complexType />
+      </s:element>
+      <s:element name="ConsultaDominiosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaDominiosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaCNPJporNumSusep">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametros" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaCNPJporNumSusepResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaCNPJporNumSusepResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AlertaPagamentos">
+        <s:complexType />
+      </s:element>
+      <s:element name="AlertaPagamentosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AlertaPagamentosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MarcarAlertaPagamentos">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametros" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="MarcarAlertaPagamentosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MarcarAlertaPagamentosResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RelatorioDemonstrativoComissaoPagoPDF">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametros" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RelatorioDemonstrativoComissaoPagoPDFResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RelatorioDemonstrativoComissaoPagoPDFResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaConsolidadaPagamentoPorData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametros" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaConsolidadaPagamentoPorDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaConsolidadaPagamentoPorDataResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaDemonstrativoPago">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Parametros" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsultaDemonstrativoPagoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsultaDemonstrativoPagoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ConsultaConsolidadaValoresPagarSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaConsolidadaValoresPagar" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaConsolidadaValoresPagarSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaConsolidadaValoresPagarResponse" />
+  </wsdl:message>
+  <wsdl:message name="RelatorioComissaoPagarDetalhePDFSoapIn">
+    <wsdl:part name="parameters" element="tns:RelatorioComissaoPagarDetalhePDF" />
+  </wsdl:message>
+  <wsdl:message name="RelatorioComissaoPagarDetalhePDFSoapOut">
+    <wsdl:part name="parameters" element="tns:RelatorioComissaoPagarDetalhePDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDetalheMovimentoPagoSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaDetalheMovimentoPago" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDetalheMovimentoPagoSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaDetalheMovimentoPagoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDominiosSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaDominios" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDominiosSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaDominiosResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCNPJporNumSusepSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaCNPJporNumSusep" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaCNPJporNumSusepSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaCNPJporNumSusepResponse" />
+  </wsdl:message>
+  <wsdl:message name="AlertaPagamentosSoapIn">
+    <wsdl:part name="parameters" element="tns:AlertaPagamentos" />
+  </wsdl:message>
+  <wsdl:message name="AlertaPagamentosSoapOut">
+    <wsdl:part name="parameters" element="tns:AlertaPagamentosResponse" />
+  </wsdl:message>
+  <wsdl:message name="MarcarAlertaPagamentosSoapIn">
+    <wsdl:part name="parameters" element="tns:MarcarAlertaPagamentos" />
+  </wsdl:message>
+  <wsdl:message name="MarcarAlertaPagamentosSoapOut">
+    <wsdl:part name="parameters" element="tns:MarcarAlertaPagamentosResponse" />
+  </wsdl:message>
+  <wsdl:message name="RelatorioDemonstrativoComissaoPagoPDFSoapIn">
+    <wsdl:part name="parameters" element="tns:RelatorioDemonstrativoComissaoPagoPDF" />
+  </wsdl:message>
+  <wsdl:message name="RelatorioDemonstrativoComissaoPagoPDFSoapOut">
+    <wsdl:part name="parameters" element="tns:RelatorioDemonstrativoComissaoPagoPDFResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaConsolidadaPagamentoPorDataSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaConsolidadaPagamentoPorData" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaConsolidadaPagamentoPorDataSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaConsolidadaPagamentoPorDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDemonstrativoPagoSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsultaDemonstrativoPago" />
+  </wsdl:message>
+  <wsdl:message name="ConsultaDemonstrativoPagoSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsultaDemonstrativoPagoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ConsultasSoap">
+    <wsdl:operation name="ConsultaConsolidadaValoresPagar">
+      <wsdl:input message="tns:ConsultaConsolidadaValoresPagarSoapIn" />
+      <wsdl:output message="tns:ConsultaConsolidadaValoresPagarSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RelatorioComissaoPagarDetalhePDF">
+      <wsdl:input message="tns:RelatorioComissaoPagarDetalhePDFSoapIn" />
+      <wsdl:output message="tns:RelatorioComissaoPagarDetalhePDFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDetalheMovimentoPago">
+      <wsdl:input message="tns:ConsultaDetalheMovimentoPagoSoapIn" />
+      <wsdl:output message="tns:ConsultaDetalheMovimentoPagoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDominios">
+      <wsdl:input message="tns:ConsultaDominiosSoapIn" />
+      <wsdl:output message="tns:ConsultaDominiosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCNPJporNumSusep">
+      <wsdl:input message="tns:ConsultaCNPJporNumSusepSoapIn" />
+      <wsdl:output message="tns:ConsultaCNPJporNumSusepSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AlertaPagamentos">
+      <wsdl:input message="tns:AlertaPagamentosSoapIn" />
+      <wsdl:output message="tns:AlertaPagamentosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="MarcarAlertaPagamentos">
+      <wsdl:input message="tns:MarcarAlertaPagamentosSoapIn" />
+      <wsdl:output message="tns:MarcarAlertaPagamentosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RelatorioDemonstrativoComissaoPagoPDF">
+      <wsdl:input message="tns:RelatorioDemonstrativoComissaoPagoPDFSoapIn" />
+      <wsdl:output message="tns:RelatorioDemonstrativoComissaoPagoPDFSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaConsolidadaPagamentoPorData">
+      <wsdl:input message="tns:ConsultaConsolidadaPagamentoPorDataSoapIn" />
+      <wsdl:output message="tns:ConsultaConsolidadaPagamentoPorDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDemonstrativoPago">
+      <wsdl:input message="tns:ConsultaDemonstrativoPagoSoapIn" />
+      <wsdl:output message="tns:ConsultaDemonstrativoPagoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ConsultasSoap" type="tns:ConsultasSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConsultaConsolidadaValoresPagar">
+      <soap:operation soapAction="http://tempuri.org/ConsultaConsolidadaValoresPagar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RelatorioComissaoPagarDetalhePDF">
+      <soap:operation soapAction="http://tempuri.org/RelatorioComissaoPagarDetalhePDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDetalheMovimentoPago">
+      <soap:operation soapAction="http://tempuri.org/ConsultaDetalheMovimentoPago" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDominios">
+      <soap:operation soapAction="http://tempuri.org/ConsultaDominios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCNPJporNumSusep">
+      <soap:operation soapAction="http://tempuri.org/ConsultaCNPJporNumSusep" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AlertaPagamentos">
+      <soap:operation soapAction="http://tempuri.org/AlertaPagamentos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarcarAlertaPagamentos">
+      <soap:operation soapAction="http://tempuri.org/MarcarAlertaPagamentos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RelatorioDemonstrativoComissaoPagoPDF">
+      <soap:operation soapAction="http://tempuri.org/RelatorioDemonstrativoComissaoPagoPDF" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaConsolidadaPagamentoPorData">
+      <soap:operation soapAction="http://tempuri.org/ConsultaConsolidadaPagamentoPorData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDemonstrativoPago">
+      <soap:operation soapAction="http://tempuri.org/ConsultaDemonstrativoPago" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ConsultasSoap12" type="tns:ConsultasSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConsultaConsolidadaValoresPagar">
+      <soap12:operation soapAction="http://tempuri.org/ConsultaConsolidadaValoresPagar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RelatorioComissaoPagarDetalhePDF">
+      <soap12:operation soapAction="http://tempuri.org/RelatorioComissaoPagarDetalhePDF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDetalheMovimentoPago">
+      <soap12:operation soapAction="http://tempuri.org/ConsultaDetalheMovimentoPago" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDominios">
+      <soap12:operation soapAction="http://tempuri.org/ConsultaDominios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaCNPJporNumSusep">
+      <soap12:operation soapAction="http://tempuri.org/ConsultaCNPJporNumSusep" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AlertaPagamentos">
+      <soap12:operation soapAction="http://tempuri.org/AlertaPagamentos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="MarcarAlertaPagamentos">
+      <soap12:operation soapAction="http://tempuri.org/MarcarAlertaPagamentos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RelatorioDemonstrativoComissaoPagoPDF">
+      <soap12:operation soapAction="http://tempuri.org/RelatorioDemonstrativoComissaoPagoPDF" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaConsolidadaPagamentoPorData">
+      <soap12:operation soapAction="http://tempuri.org/ConsultaConsolidadaPagamentoPorData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsultaDemonstrativoPago">
+      <soap12:operation soapAction="http://tempuri.org/ConsultaDemonstrativoPago" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Consultas">
+    <wsdl:port name="ConsultasSoap" binding="tns:ConsultasSoap">
+      <soap:address location="http://200.152.194.6:8888/consultas.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ConsultasSoap12" binding="tns:ConsultasSoap12">
+      <soap12:address location="http://200.152.194.6:8888/consultas.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

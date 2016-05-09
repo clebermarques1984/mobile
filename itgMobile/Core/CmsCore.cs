@@ -1,20 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Xml;
-using System.Xml.Serialization;
-using Xamarin.Forms;
-using System.IO;
 using itgMobile.Core.Service;
 
 namespace itgMobile.Core
 {
-	public class CmsCore
+    public class CmsCore
 	{
 		public string getCmsPagasPorData(string xmlString)
 		{
 			string ret = "";
 
-			var obj = DependencyService.Get<ICore>();
+			var obj = ItgWebService.itgEspecifico;
 
 			Dictionary<string, string> dicNodes;
 
@@ -32,7 +28,7 @@ namespace itgMobile.Core
 		{
 			bool ret = false;
 
-			var obj = DependencyService.Get<ICore> ();
+			var obj = ItgWebService.itgEspecifico;
 
 			Dictionary<string, string> dicNodes;
 

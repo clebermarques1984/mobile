@@ -17,5 +17,10 @@
 				Command="{Binding ListaCommand}"></Button>
 			<Button Text="Abrir Pdf" 
 				Command="{Binding AbrirPdfCommand}"></Button>
-		</StackLayout>
+      <ActivityIndicator IsVisible="{Binding IsBusy}"
+             IsRunning="{Binding IsBusy}"
+             Color="Black"
+             VerticalOptions="CenterAndExpand"
+             HorizontalOptions="CenterAndExpand" />
+    </StackLayout> 
 </ContentPage>

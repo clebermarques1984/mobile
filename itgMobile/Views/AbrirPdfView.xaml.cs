@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using itgMobile.ViewModels;
 using Xamarin.Forms;
 
 namespace itgMobile.Views
@@ -9,6 +9,7 @@ namespace itgMobile.Views
 	{
 		public AbrirPdfView ()
 		{
+            BindingContext = new AbrirPdfViewModel ();
 			InitializeComponent ();
 		}
 	}

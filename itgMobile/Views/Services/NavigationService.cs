@@ -24,9 +24,9 @@ namespace itgMobile.Views.Services
 			await Application.Current.MainPage.Navigation.PushAsync (view);
 		}
 
-		public async Task NavigateToAbrirPdf()
+		public async Task NavigateToAbrirPdf(AbrirPdfView view)
 		{
-			await Application.Current.MainPage.Navigation.PushAsync (new AbrirPdfView());
+			await Application.Current.MainPage.Navigation.PushAsync (view);
 		}
 
 		#endregion
