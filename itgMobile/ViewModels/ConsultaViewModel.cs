@@ -13,147 +13,102 @@ using System.Xml.Serialization;
 
 namespace itgMobile.ViewModels
 {
-	public class ConsultaViewModel : BaseViewModel
-	{
+    public class ConsultaViewModel : BaseViewModel
+    {
+        private readonly Services.INavigationService _navigationService;
 
-		public ICommand ListaCommand { get; set; }
-		public ICommand AbrirPdfCommand { get; set; }
+        private readonly Services.IMessageService _messageService;
 
-		private readonly Services.INavigationService _navigationService;
-		private readonly Services.IMessageService _messageService;
+        public ICommand ListaCommand { get; set; }
 
-		private string _cnpj = "55555555555576";
-		public string CNPJ {
-			get{ return _cnpj; }
-			set{
-				_cnpj = value;
-				OnPropertyChanged();
-			}
-		}
+        public ICommand AbrirPdfCommand { get; set; }
 
-		private DateTime _dataInicial = new DateTime(2010,11,01);
-		public DateTime DataInicial {
-			get{ return _dataInicial; }
-			set{
-				_dataInicial = value;
-				OnPropertyChanged();
-			}
-		}
-
-		private DateTime _dataFinal = new DateTime(2011,11,30);
-		public DateTime DataFinal {
-			get{ return _dataFinal; }
-			set{
-				_dataFinal = value;
-				OnPropertyChanged();
-			}
-		}
-
-		public ConsultaViewModel()
-		{
-			this.ListaCommand = new Command(this.Lista);
-			this.AbrirPdfCommand = new Command(this.AbrirPdf);
-			this._navigationService = DependencyService.Get<Services.INavigationService>();
-			this._messageService = DependencyService.Get<Services.IMessageService>();
-		}
-
-		private async void Lista()
-		{
-            if (await this._messageService.ShowAsync (
-				"Confirmação:"
-				,"Gostaria de listar pagamentos?")) 
-			{
-                IsBusy = true;
-                var viewModel = new ListaViewModel ();
-				viewModel.Comissoes = getCmsPorData ();
-				var view = new ListaView ();
-				view.BindingContext = viewModel;
-                await this._navigationService.NavigateToLista(view);
-               IsBusy = false;
+        private string _cnpj;
+        public string CNPJ
+        {
+            get { return _cnpj; }
+            set
+            {
+                _cnpj = value;
+                OnPropertyChanged();
             }
         }
 
-        private async void AbrirPdf()
-		{
-            if (await this._messageService.ShowAsync (
-					"Confirmação:"
-					,"Gostaria de abrir o relatório em PDF?")) 
-			{
+        private DateTime _dataInicial;
+        public DateTime DataInicial
+        {
+            get { return _dataInicial; }
+            set
+            {
+                _dataInicial = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private DateTime _dataFinal;
+        public DateTime DataFinal
+        {
+            get { return _dataFinal; }
+            set
+            {
+                _dataFinal = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ConsultaViewModel()
+        {
+            //Define valores iniciais para CNPJ, DataInicial e DataFinal
+            _cnpj = "55555555555576";
+            _dataInicial = new DateTime(2010, 11, 01);
+            _dataFinal = new DateTime(2011, 11, 30);
+
+            this.ListaCommand = new Command(this.Lista);
+            this.AbrirPdfCommand = new Command(this.AbrirPdf);
+            this._navigationService = DependencyService.Get<Services.INavigationService>();
+            this._messageService = DependencyService.Get<Services.IMessageService>();
+        }
+
+        private async void Lista()
+        {
+            if (await this._messageService.ShowAsync(
+                "Confirmação:"
+                , "Gostaria de listar pagamentos?"))
+            {
                 IsBusy = true;
-                var viewModel = new AbrirPdfViewModel ();
-                viewModel.Status = tryOpenPdf();
-                string msg = ItgWebService.itgEspecifico.errorMsg;
-                viewModel.Message = (!string.IsNullOrEmpty(msg)) ? msg : "Operação executada com sucesso.";
-                var view = new AbrirPdfView();
+                var obj = new CmsCore();
+                var viewModel = new ListaViewModel();
+                await Task.Delay(5).ContinueWith(
+                        task => viewModel.Comissoes = obj.List(_cnpj, _dataInicial, _dataFinal)
+                );
+                var view = new ListaView();
                 view.BindingContext = viewModel;
-				await this._navigationService.NavigateToAbrirPdf(view);
+                await this._navigationService.NavigateToLista(view);
                 IsBusy = false;
             }
         }
 
-        private List<ComissaoInfo> getCmsPorData()
-		{
-			CmsCore obj = new CmsCore();
+        private async void AbrirPdf()
+        {
+            if (await this._messageService.ShowAsync(
+                    "Confirmação:"
+                    , "Gostaria de abrir o relatório em PDF?"))
+            {
+                IsBusy = true;
+                var obj = new CmsCore();
+                var viewModel = new AbrirPdfViewModel();
+                await Task.Delay(5).ContinueWith(
+                    task => viewModel.Status = obj.tryOpenPdf(_cnpj, _dataInicial, _dataFinal)
+                );
+                string msg = ItgWebService.itgEspecifico.errorMsg;
+                viewModel.Message = (!string.IsNullOrEmpty(msg)) ? msg : "Operação executada com sucesso.";
+                var view = new AbrirPdfView();
+                view.BindingContext = viewModel;
+                await this._navigationService.NavigateToAbrirPdf(view);
+                IsBusy = false;
+            }
+        }
 
-			XmlUtil objXml = new XmlUtil();
-
-            //objXml.XmlStringBase = objXml.LoadXmlEmbedded ("itgMobile.Resource.input_8_1.xml");
-            objXml.XmlStringBase = Resource.itgMobileResource.input_8_1;
-
-			//Define parametros de input no XML
-			objXml.setParamValue("@cnpj", _cnpj);
-			objXml.setParamValue("@dtInicial", _dataInicial);
-			objXml.setParamValue("@dtFinal", _dataFinal);
-
-			string xmlString = obj.getCmsPagasPorData(objXml.XmlString);
-
-			//Retorna a lista de comissoes
-			List<ComissaoInfo> comissoes = SerializarComissao(xmlString);
-			return comissoes;
-		}
-
-		private bool tryOpenPdf()
-		{
-			CmsCore obj = new CmsCore();
-
-			XmlUtil objXml = new XmlUtil();
-
-			//objXml.XmlStringBase = objXml.LoadXmlEmbedded ("itgMobile.Resource.input_8_4.xml");
-			objXml.XmlStringBase = Resource.itgMobileResource.input_8_4;
-
-			//Define parametros de input no XML
-			objXml.setParamValue("@cnpj", _cnpj);
-			objXml.setParamValue("@dtInicial", _dataInicial);
-			objXml.setParamValue("@dtFinal", _dataFinal);
-
-			return obj.abriPdf(objXml.XmlString);
-		}
-
-		public List<ComissaoInfo> SerializarComissao(string xmlString)
-		{
-			if (string.IsNullOrEmpty(xmlString))
-			{
-				return null;
-			}
-
-			try
-			{
-				var comissoes = new ComissoesList();
-
-				Stream stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(xmlString));
-				//Define o tipo de serialização
-				XmlSerializer cmsSerializer = new XmlSerializer(typeof(ComissoesList));
-				//Transforma o XML e List<ComissaoInfo> e atribui o valor a comissoes
-				comissoes = (ComissoesList)cmsSerializer.Deserialize(stream);
-
-				return comissoes.ComissaoList;
-			}
-			catch (Exception ex)
-			{
-				throw new Exception(ex.Message);
-			}
-		}
-
-	}
+    }
 }
 

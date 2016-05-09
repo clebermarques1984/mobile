@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -39,6 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.EnterpriseServices" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
@@ -72,6 +73,8 @@
     <Compile Include="ItgMobileEspecifico.cs" />
     <Compile Include="Web References\intranet.itg.cms_ws\Reference.cs">
       <DependentUpon>Reference.map</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -91,7 +94,6 @@
     <Folder Include="Resources\values\" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\icon.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
@@ -107,5 +109,8 @@
       <RelPath>Web References\intranet.itg.cms_ws</RelPath>
       <UpdateFromURL>http://200.152.194.6:8888/consultas.asmx</UpdateFromURL>
     </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\icon.png" />
   </ItemGroup>
 </Project>

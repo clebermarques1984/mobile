@@ -1,12 +1,41 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Xml.Serialization;
 using itgMobile.Core.Service;
+using itgMobile.Models;
 
 namespace itgMobile.Core
 {
     public class CmsCore
 	{
-		public string getCmsPagasPorData(string xmlString)
+        /// <summary>
+        /// Retorna uma lista de pagamentos do CNPJ/CPF dentro do periodo definido
+        /// </summary>
+        /// <param name="Cnpj">CNPN/CPF do corretor</param>
+        /// <param name="DataInicial">Data Inicial dos pagamentos</param>
+        /// <param name="DataFinal">Data Final dos pagamentos</param>
+        /// <returns></returns>
+        public List<ComissaoInfo> List(string Cnpj, DateTime DataInicial, DateTime DataFinal)
+        {
+            XmlUtil objXml = new XmlUtil();
+
+            //objXml.XmlStringBase = objXml.LoadXmlEmbedded ("itgMobile.Resource.input_8_1.xml");
+            objXml.XmlStringBase = Resource.itgMobileResource.input_8_1;
+
+            //Define parametros de input no XML
+            objXml.setParamValue("@cnpj", Cnpj);
+            objXml.setParamValue("@dtInicial", DataInicial);
+            objXml.setParamValue("@dtFinal", DataFinal);
+
+            string xmlString = getXmlCmsPagas(objXml.XmlString);
+
+            //Retorna a lista de comissoes
+            List<ComissaoInfo> comissoes = SerializarComissao(xmlString);
+            return comissoes;
+        }
+
+        private string getXmlCmsPagas(string xmlString)
 		{
 			string ret = "";
 
@@ -24,7 +53,54 @@ namespace itgMobile.Core
 			return ret; 
 		}
 
-		public bool abriPdf(string xmlString)
+        private List<ComissaoInfo> SerializarComissao(string xmlString)
+        {
+            if (string.IsNullOrEmpty(xmlString))
+            {
+                return null;
+            }
+
+            try
+            {
+                var comissoes = new ComissoesList();
+
+                Stream stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(xmlString));
+                //Define o tipo de serialização
+                XmlSerializer cmsSerializer = new XmlSerializer(typeof(ComissoesList));
+                //Transforma o XML e List<ComissaoInfo> e atribui o valor a comissoes
+                comissoes = (ComissoesList)cmsSerializer.Deserialize(stream);
+
+                return comissoes.ComissaoList;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Tenta abrir o relatório PDF de pagamentos do CNPJ/CPF dentro do periodo definido
+        /// </summary>
+        /// <param name="Cnpj">CNPN/CPF do corretor</param>
+        /// <param name="DataInicial">Data Inicial dos pagamentos</param>
+        /// <param name="DataFinal">Data Final dos pagamentos</param>
+        /// <returns></returns>
+        public bool tryOpenPdf(string Cnpj, DateTime DataInicial, DateTime DataFinal)
+        {
+            XmlUtil objXml = new XmlUtil();
+
+            //objXml.XmlStringBase = objXml.LoadXmlEmbedded ("itgMobile.Resource.input_8_4.xml");
+            objXml.XmlStringBase = Resource.itgMobileResource.input_8_4;
+
+            //Define parametros de input no XML
+            objXml.setParamValue("@cnpj", Cnpj);
+            objXml.setParamValue("@dtInicial", DataInicial);
+            objXml.setParamValue("@dtFinal", DataFinal);
+
+            return getXmlPdf(objXml.XmlString);
+        }
+
+        private bool getXmlPdf(string xmlString)
 		{
 			bool ret = false;
 
