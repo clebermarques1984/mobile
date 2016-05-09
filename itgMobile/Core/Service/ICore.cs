@@ -39,5 +39,7 @@ namespace itgMobile.Core.Service
 		/// </summary>
 		/// <param name="pdfPath">Endereço completo do arquivo pdf</param>
 		void abrirPdf(string pdfPath);
+
+        void quitApp();
 	}
 }

@@ -10,6 +10,7 @@ using Foundation;
 using UIKit;
 using QuickLook;
 using itgMobile.Core.Service;
+using System.Threading;
 
 [assembly: Dependency(typeof(ItgEspecifico))]
 
@@ -181,7 +182,12 @@ namespace itgMobile.iOS
 			return null;
 		}
 
-		public class PDFItem : QLPreviewItem
+        public void quitApp()
+        {
+            Thread.CurrentThread.Abort();
+        }
+
+        public class PDFItem : QLPreviewItem
 		{
 			string title;
 			string uri;

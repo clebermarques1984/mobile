@@ -30,9 +30,9 @@ namespace itgMobile.ViewModels
 
 		private async void Sair()
 		{
-			//Implements exit function
-			await this._navigationService.NavigateToConsulta();
-		}
+            //Implements exit function
+            //itgMobile.Core.ItgWebService.itgEspecifico.quitApp();
+        }
 
-	}
+    }
 }

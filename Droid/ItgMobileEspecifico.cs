@@ -141,5 +141,10 @@ namespace itgMobile.Droid
 				}
 			}
 		}
-	}
+
+        public void quitApp()
+        {
+            Android.OS.Process.KillProcess(Android.OS.Process.MyPid());
+        }
+    }
 }
