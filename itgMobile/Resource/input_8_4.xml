@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--8.4 Demonstrativo de comissao paga em PDF-->
+<!--Exemplo de entrada-->
+<!--Metodo: RelatorioDemonstrativoComissaoPagoPDF (ref 8.4)-->
+<!--Campo comentado refere-se aos campos de consulta da ITG-->
+<EntradaComissoes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Parametros xsi:type="ParametroDemostrativoComissoesPagas">
+    <!--DataInicial-->
+    <dataInicial>@dtInicial</dataInicial>
+    <!--DataFinal-->
+    <dataFinal>@dtFinal</dataFinal>
+    <cnpjs>
+      <!--CNPJ (lista de cnpjs separados por ",")-->
+      <cnpj>@cnpj</cnpj>
+    </cnpjs>
+  </Parametros>
+</EntradaComissoes>

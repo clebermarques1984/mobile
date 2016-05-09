@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--8.1 Consolidada de pagamento por data-->
+<!--Exemplo de entrada-->
+<!--Metodo: ConsultaConsolidadaPagamentoPorData (ref 8.1)-->
+<!--Campo comentado refere-se aos campos de consulta da ITG-->
+<EntradaComissoes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Parametros xsi:type="ParametroListaComissaoPagas">
+    <!--DataInicial-->
+    <dataInicial>@dtInicial</dataInicial>
+    <!--DataFinal-->
+    <dataFinal>@dtFinal</dataFinal>
+    <nr_pagina>1</nr_pagina>
+    <nr_linha_pagina>5</nr_linha_pagina>
+    <cnpjs>
+      <!--CNPJ (lista de cnpjs separados por ",")-->
+      <cnpj>@cnpj</cnpj>
+    </cnpjs>
+    <cliente></cliente>
+  </Parametros>
+</EntradaComissoes>
