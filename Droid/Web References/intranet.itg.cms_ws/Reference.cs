@@ -13,7 +13,7 @@
 // 
 #pragma warning disable 1591
 
-namespace itgMobile.Droid.intranet.itg.cms_ws {
+namespace Mobile.Droid.intranet.itg.cms_ws {
     using System;
     using System.Web.Services;
     using System.Diagnostics;

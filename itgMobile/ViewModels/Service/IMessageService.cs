@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace itgMobile.ViewModels.Services
+namespace Mobile.ViewModels.Services
 {
 	public interface IMessageService
 	{

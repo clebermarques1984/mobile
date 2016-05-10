@@ -1,19 +1,19 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace itgMobile.ViewModels
+namespace Mobile.ViewModels
 {
 	public class BaseViewModel : INotifyPropertyChanged
 	{
 		// here's your shared IsBusy property
-		private bool _isBusy;
+		private bool isBusy;
 
 		public bool IsBusy
 		{
-			get { return _isBusy; }
+			get { return isBusy; }
 			set
 			{
-				_isBusy = value;
+				isBusy = value;
 				// again, this is very important
 				OnPropertyChanged();
 			}

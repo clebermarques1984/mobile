@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
-using itgMobile.Views;
+using Mobile.Views;
 
-namespace itgMobile.ViewModels.Services
+namespace Mobile.ViewModels.Services
 {
 	public interface INavigationService
 	{

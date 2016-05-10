@@ -1,27 +1,21 @@
 ﻿using System;
-using itgMobile.ViewModels;
+using Mobile.ViewModels;
 using System.Collections.Generic;
-using itgMobile.Models;
+using Mobile.Models;
 
-namespace itgMobile.ViewModels
+namespace Mobile.ViewModels
 {
 	public class ListaViewModel : BaseViewModel
 	{
 		
-		private List<ComissaoInfo> _comissoes;
+		private List<ComissaoInfo> comissoes;
 		public List<ComissaoInfo> Comissoes {
-			get { return _comissoes; }
+			get { return comissoes; }
 			set {
-				_comissoes = value;
+				comissoes = value;
 				OnPropertyChanged ();
 			}
 		}
-
-		public ListaViewModel ()
-		{
-
-		}			
-
 	}
 }
 

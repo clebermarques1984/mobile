@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
-using itgMobile.ViewModels.Services;
+using Mobile.ViewModels.Services;
 
-namespace itgMobile.Views.Services
+namespace Mobile.Views.Services
 {
 	public class NavigationService : INavigationService 
 	{

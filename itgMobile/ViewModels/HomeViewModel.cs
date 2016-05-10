@@ -6,33 +6,31 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
-namespace itgMobile.ViewModels
+namespace Mobile.ViewModels
 {
-	class HomeViewModel : BaseViewModel
-	{
+    class HomeViewModel : BaseViewModel
+    {
+        public ICommand ConsultaCommand { get; set; }
+        public ICommand ExitCommand { get; set; }
 
-		public ICommand ConsultaCommand { get; set; }
-		public ICommand ExitCommand { get; set; }
+        private readonly Services.INavigationService navigationService;
 
-		private readonly Services.INavigationService _navigationService;
-
-		public HomeViewModel()
-		{
-			this.ConsultaCommand = new Command(this.Consulta);
-			this.ExitCommand = new Command(this.Sair);
-			this._navigationService = DependencyService.Get<Services.INavigationService>();
-		}
-
-		private async void Consulta()
-		{
-			await this._navigationService.NavigateToConsulta();
-		}
-
-		private async void Sair()
-		{
-            //Implements exit function
-            //itgMobile.Core.ItgWebService.itgEspecifico.quitApp();
+        public HomeViewModel()
+        {
+            this.ConsultaCommand = new Command(this.Consulta);
+            //this.ExitCommand = new Command(this.Sair);
+            this.navigationService = DependencyService.Get<Services.INavigationService>();
         }
 
+        private async void Consulta()
+        {
+            await this.navigationService.NavigateToConsulta();
+        }
+
+        //private async void Sair()
+        //{
+        //    //Implements exit function
+        //    Mobile.Core.ItgWebService.Especifico.QuitApp();
+        //}
     }
 }

@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using System.Xml.Serialization;
-using itgMobile.Core.Service;
-using itgMobile.Models;
+using Mobile.Core.Service;
+using Mobile.Models;
 
-namespace itgMobile.Core
+namespace Mobile.Core
 {
     public class CmsCore
-	{
+    {
         /// <summary>
         /// Retorna uma lista de pagamentos do CNPJ/CPF dentro do periodo definido
         /// </summary>
@@ -16,42 +17,44 @@ namespace itgMobile.Core
         /// <param name="DataInicial">Data Inicial dos pagamentos</param>
         /// <param name="DataFinal">Data Final dos pagamentos</param>
         /// <returns></returns>
-        public List<ComissaoInfo> List(string Cnpj, DateTime DataInicial, DateTime DataFinal)
+        public Task<List<ComissaoInfo>> ListAsync(string Cnpj, DateTime DataInicial, DateTime DataFinal)
         {
-            XmlUtil objXml = new XmlUtil();
+            return Task.Factory.StartNew(() =>
+            {
+                XmlUtil objXml = new XmlUtil();
 
-            //objXml.XmlStringBase = objXml.LoadXmlEmbedded ("itgMobile.Resource.input_8_1.xml");
-            objXml.XmlStringBase = Resource.itgMobileResource.input_8_1;
+                //objXml.XmlStringBase = objXml.LoadXmlEmbedded ("Mobile.Resource.input_8_1.xml");
+                objXml.XmlStringBase = Resource.MobileResource.input_8_1;
 
-            //Define parametros de input no XML
-            objXml.setParamValue("@cnpj", Cnpj);
-            objXml.setParamValue("@dtInicial", DataInicial);
-            objXml.setParamValue("@dtFinal", DataFinal);
+                //Define parametros de input no XML
+                objXml.setParamValue("@cnpj", Cnpj);
+                objXml.setParamValue("@dtInicial", DataInicial);
+                objXml.setParamValue("@dtFinal", DataFinal);
 
-            string xmlString = getXmlCmsPagas(objXml.XmlString);
-
-            //Retorna a lista de comissoes
-            List<ComissaoInfo> comissoes = SerializarComissao(xmlString);
-            return comissoes;
+                string xmlString = GetXmlCmsPagas(objXml.XmlString);
+                //Retorna a lista de comissoes
+                List<ComissaoInfo> comissoes = SerializarComissao(xmlString);
+                return comissoes;
+            });
         }
 
-        private string getXmlCmsPagas(string xmlString)
-		{
-			string ret = "";
+        private string GetXmlCmsPagas(string xmlString)
+        {
+            string ret = "";
 
-			var obj = ItgWebService.itgEspecifico;
+            var obj = NativeCore.Especifico;
 
-			Dictionary<string, string> dicNodes;
+            Dictionary<string, string> dicNodes;
 
-			dicNodes = obj.getXmlRetornoWS(xmlString, metodos.ConsultaConsolidadaPagamentoPorData, false);
+            dicNodes = obj.GetXmlRetornoWS(xmlString, Metodo.ConsultaConsolidadaPagamentoPorData, false);
 
-			if (dicNodes.ContainsKey("Comissoes"))
-			{
-				ret = dicNodes["Comissoes"];
-			}
+            if (dicNodes.ContainsKey("Comissoes"))
+            {
+                ret = dicNodes["Comissoes"];
+            }
 
-			return ret; 
-		}
+            return ret;
+        }
 
         private List<ComissaoInfo> SerializarComissao(string xmlString)
         {
@@ -85,47 +88,51 @@ namespace itgMobile.Core
         /// <param name="DataInicial">Data Inicial dos pagamentos</param>
         /// <param name="DataFinal">Data Final dos pagamentos</param>
         /// <returns></returns>
-        public bool tryOpenPdf(string Cnpj, DateTime DataInicial, DateTime DataFinal)
+        public Task<bool> TryOpenPdfAsync(string Cnpj, DateTime DataInicial, DateTime DataFinal)
         {
-            XmlUtil objXml = new XmlUtil();
+            return Task.Factory.StartNew(() =>
+            {
+                XmlUtil objXml = new XmlUtil();
 
-            //objXml.XmlStringBase = objXml.LoadXmlEmbedded ("itgMobile.Resource.input_8_4.xml");
-            objXml.XmlStringBase = Resource.itgMobileResource.input_8_4;
+                //objXml.XmlStringBase = objXml.LoadXmlEmbedded ("Mobile.Resource.input_8_4.xml");
+                objXml.XmlStringBase = Resource.MobileResource.input_8_4;
 
-            //Define parametros de input no XML
-            objXml.setParamValue("@cnpj", Cnpj);
-            objXml.setParamValue("@dtInicial", DataInicial);
-            objXml.setParamValue("@dtFinal", DataFinal);
+                //Define parametros de input no XML
+                objXml.setParamValue("@cnpj", Cnpj);
+                objXml.setParamValue("@dtInicial", DataInicial);
+                objXml.setParamValue("@dtFinal", DataFinal);
 
-            return getXmlPdf(objXml.XmlString);
+                bool ret = GetXmlPdf(objXml.XmlString);
+                return ret;
+            });
         }
 
-        private bool getXmlPdf(string xmlString)
-		{
-			bool ret = false;
+        private bool GetXmlPdf(string xmlString)
+        {
+            bool ret = false;
 
-			var obj = ItgWebService.itgEspecifico;
+            var obj = NativeCore.Especifico;
 
-			Dictionary<string, string> dicNodes;
+            Dictionary<string, string> dicNodes;
 
-			dicNodes = obj.getXmlRetornoWS(xmlString, metodos.RelatorioDemonstrativoComissaoPagoPDF, true);
+            dicNodes = obj.GetXmlRetornoWS(xmlString, Metodo.RelatorioDemonstrativoComissaoPagoPDF, true);
 
-			string pdfString = "";
+            string pdfString = "";
 
-			if (dicNodes.ContainsKey("documento"))
-			{
-				pdfString = dicNodes["documento"];
-			}
+            if (dicNodes.ContainsKey("documento"))
+            {
+                pdfString = dicNodes["documento"];
+            }
 
-			Byte[] bytePDF = Convert.FromBase64String(pdfString);
+            Byte[] bytePDF = Convert.FromBase64String(pdfString);
 
-			string pdfPath = obj.CriarPdf(bytePDF, "relatorio.pdf");
+            string pdfPath = obj.CriarPdf(bytePDF, "relatorio.pdf");
 
-			obj.abrirPdf(pdfPath);
+            obj.AbrirPdf(pdfPath);
 
-			ret = true;
+            ret = true;
 
-			return ret;
-		}
-	}
+            return ret;
+        }
+    }
 }

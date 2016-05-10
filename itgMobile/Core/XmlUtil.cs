@@ -2,7 +2,7 @@
 using System.IO;
 using System.Reflection;
 
-namespace itgMobile.Core
+namespace Mobile.Core
 {
 	public class XmlUtil
 	{

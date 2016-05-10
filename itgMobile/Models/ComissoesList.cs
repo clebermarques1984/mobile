@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Xml.Serialization;
-using itgMobile.Models;
+using Mobile.Models;
 
-namespace itgMobile
+namespace Mobile
 {
 	[XmlRoot("Comissoes"), XmlType("Comissoes")]
 	public class ComissoesList

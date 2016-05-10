@@ -1,35 +1,28 @@
-﻿using itgMobile.Core;
-
-namespace itgMobile.ViewModels
+﻿namespace Mobile.ViewModels
 {
 
     public class AbrirPdfViewModel : BaseViewModel
     {
-        private bool _status;
+        private bool status;
         public bool Status
         {
-            get { return _status; }
+            get { return status; }
             set
             {
-                _status = value;
+                status = value;
                 OnPropertyChanged();
             }
         }
 
-        private string _message;
+        private string message;
         public string Message
         {
-            get { return _message; }
+            get { return message; }
             set
             {
-                _message = value;
+                message = value;
                 OnPropertyChanged();
             }
-        }
-
-        public AbrirPdfViewModel()
-        {
-
         }
     }
 }

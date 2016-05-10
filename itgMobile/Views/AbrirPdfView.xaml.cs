@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using itgMobile.ViewModels;
+using Mobile.ViewModels;
 using Xamarin.Forms;
 
-namespace itgMobile.Views
+namespace Mobile.Views
 {
 	public partial class AbrirPdfView : ContentPage
 	{

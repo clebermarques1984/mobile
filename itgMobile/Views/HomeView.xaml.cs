@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using Xamarin.Forms;
 
-namespace itgMobile.Views
+namespace Mobile.Views
 {
 	public partial class HomeView : ContentPage
 	{

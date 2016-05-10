@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 
 using Xamarin.Forms;
-using itgMobile.ViewModels;
+using Mobile.ViewModels;
 
-namespace itgMobile.Views
+namespace Mobile.Views
 {
 	public partial class ConsultaView : ContentPage
 	{

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using itgMobile;
+using Mobile;
 
-namespace itgMobile.Core.Service
+namespace Mobile.Core.Service
 {
-	public enum metodos
+	public enum Metodo
 	{
 		ConsultaConsolidadaPagamentoPorData,
 		RelatorioDemonstrativoComissaoPagoPDF
@@ -15,7 +15,7 @@ namespace itgMobile.Core.Service
 
 	public interface ICore
 	{
-		string errorMsg { get; set; }
+		string ErroMsg { get; set; }
 
 		/// <summary>
 		/// Cria um item para cada node do XML que pode ser acessado pelo nome
@@ -23,7 +23,7 @@ namespace itgMobile.Core.Service
 		/// <param name="xmlString"></param>
 		/// <param name="valor"></param>
 		/// <returns></returns>
-		Dictionary<string, string> getXmlRetornoWS(string xmlString, metodos valor, bool getInnerText);
+		Dictionary<string, string> GetXmlRetornoWS(string xmlString, Metodo valor, bool getInnerText);
 
 		/// <summary>
 		/// Cria um arquivo PDF no Device e retorna o endereço do arquivo como string
@@ -38,8 +38,8 @@ namespace itgMobile.Core.Service
 		/// Abri um arquivo pdf
 		/// </summary>
 		/// <param name="pdfPath">Endereço completo do arquivo pdf</param>
-		void abrirPdf(string pdfPath);
+		void AbrirPdf(string pdfPath);
 
-        void quitApp();
+        void QuitApp();
 	}
 }

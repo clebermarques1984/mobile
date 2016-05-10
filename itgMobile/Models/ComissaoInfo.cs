@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml.Serialization;
 
-namespace itgMobile.Models
+namespace Mobile.Models
 {
 	[XmlType("Comissao")]
 	public class ComissaoInfo
