@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile", "itgMobile\Mobile.csproj", "{263B9F0D-192E-4CC4-B7EE-6E333BFD2FF2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile", "Mobile\Mobile.csproj", "{263B9F0D-192E-4CC4-B7EE-6E333BFD2FF2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobile.iOS", "iOS\Mobile.iOS.csproj", "{8F2DCD1A-F031-4579-BDBC-E4ADEBCF79CE}"
 EndProject
