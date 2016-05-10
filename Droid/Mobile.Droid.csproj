@@ -85,7 +85,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\itgMobile\Mobile.csproj">
+    <ProjectReference Include="..\Mobile\Mobile.csproj">
       <Project>{263B9F0D-192E-4CC4-B7EE-6E333BFD2FF2}</Project>
       <Name>Mobile</Name>
     </ProjectReference>
