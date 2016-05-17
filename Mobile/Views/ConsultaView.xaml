@@ -1,26 +1,33 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-		x:Class="Mobile.Views.ConsultaView"
-		Title="Consulta Pagamentos">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Mobile.Views.ConsultaView"
+             Title="Consulta Pagamentos">
   <StackLayout Padding="5,20,5,5">
     <Label Text="CNPJ do Corretor" HorizontalOptions="Center" FontSize="Medium" />
     <Entry Keyboard="Numeric" Placeholder="Digite o CNPJ aqui"
-      Text="{Binding CNPJ, Mode=TwoWay}" />
+           Text="{Binding CNPJ, Mode=TwoWay}" />
     <Label Text="Data Inicial" HorizontalOptions="Center" FontSize="Medium" />
     <DatePicker Format="dd/MM/yyyy"
-      Date = "{Binding DataInicial, Mode=TwoWay}" />
+                Date = "{Binding DataInicial, Mode=TwoWay}" />
     <Label Text="Data Final" HorizontalOptions="Center" FontSize="Medium" />
     <DatePicker Format="dd/MM/yyyy"
-      Date = "{Binding DataFinal, Mode=TwoWay}" />
+                Date = "{Binding DataFinal, Mode=TwoWay}" />
     <Button Text="Consultar"
-      Command="{Binding ListaCommand}"></Button>
+            Command="{Binding ListaCommand}"></Button>
     <Button Text="Abrir Pdf"
-      Command="{Binding AbrirPdfCommand}"></Button>
-    <ActivityIndicator IsVisible="{Binding IsBusy}"
-           IsRunning="{Binding IsBusy}"
-           Color="Default"
-           VerticalOptions="CenterAndExpand"
-           HorizontalOptions="CenterAndExpand" />
+            Command="{Binding AbrirPdfCommand}"></Button>
+    <ActivityIndicator VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+                       IsVisible="{Binding IsBusy}"
+                       IsRunning="{Binding IsBusy}">
+      <ActivityIndicator.Color>
+        <OnPlatform x:TypeArguments="Color" iOS="Black" Android="Default" WinPhone="Default" />
+      </ActivityIndicator.Color>
+    </ActivityIndicator>
   </StackLayout>
+  <ContentPage.ToolbarItems>
+    <ToolbarItem Name="Consultar" Order="Secondary" Command="{Binding ListaCommand}" />
+    <ToolbarItem Name="Abrir Pdf" Order="Secondary" Command="{Binding AbrirPdfCommand}" />
+  </ContentPage.ToolbarItems>
 </ContentPage>
+

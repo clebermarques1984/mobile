@@ -8,9 +8,15 @@ namespace Mobile
 	public class ComissoesList
 	{
 		public ComissoesList()
+            : this(new List<ComissaoInfo>())
 		{
-			ComissaoList = new List<ComissaoInfo>();
+
 		}
+
+        public ComissoesList(List<ComissaoInfo> comissoesList)
+        {
+            ComissaoList = comissoesList;
+        }
 
 		[XmlElement("Comissao")]
 		public List<ComissaoInfo> ComissaoList { get; set; }
