@@ -3,8 +3,20 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	x:Class="Mobile.Views.HomeView"
 	Title="Home">
-  <StackLayout Padding="5,20,5,5">
-    <Button Text="Consulta Pag. CMS" Command="{Binding ConsultaCommand}"></Button>
+  <StackLayout Padding="5,20,5,5" VerticalOptions="FillAndExpand">
+    <!-- Show a label in WinPhone to play the title function-->
+    <Label Text="Home">
+      <Label.IsVisible>
+        <OnPlatform x:TypeArguments="x:Boolean" iOS="False" Android="False" WinPhone="True" />
+      </Label.IsVisible>
+    </Label>
+    <!--<Button Text="Consulta Pag. CMS" Command="{Binding ConsultaCommand}"></Button>-->
     <!--<Button Text="Sair" Command="{Binding ExitCommand}"></Button>-->
+    <TableView Intent="Menu">
+      <TableSection>
+        <TextCell Text="Consulta Pag. CMS" Command="{Binding ConsultaCommand}"></TextCell>
+        <!--<TextCell Text="Sair" Command="{Binding ExitCommand}"></TextCell>-->
+      </TableSection>
+    </TableView>
   </StackLayout>
 </ContentPage>
