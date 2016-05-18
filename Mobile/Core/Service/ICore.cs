@@ -17,6 +17,8 @@ namespace Mobile.Core.Service
 	{
 		string ErroMsg { get; set; }
 
+        bool HasError { get; }
+
 		/// <summary>
 		/// Cria um item para cada node do XML que pode ser acessado pelo nome
 		/// </summary>
@@ -32,7 +34,7 @@ namespace Mobile.Core.Service
 		/// <param name="strName">Nome que o arquivo será salvo</param>
 		/// <returns></returns>
 
-		string CriarPdf(Byte[] bytePDF, string strName);
+		string CriarPdf(byte[] bytePDF, string strName);
 
 		/// <summary>
 		/// Abri um arquivo pdf

@@ -27,6 +27,11 @@ namespace Mobile.Droid
 
         public string ErroMsg { get; set; }
 
+        public bool HasError
+        {
+            get { return !string.IsNullOrEmpty(ErroMsg); }
+        }
+
         public Dictionary<string, string> GetXmlRetornoWS(string xmlString, Metodo valor, bool getInnerText)
         {
             try
@@ -54,36 +59,32 @@ namespace Mobile.Droid
             }
             catch (Exception ex)
             {
-                ErroMsg = String.Format(@"ERROR: {0}", ex.Message);
+                ErroMsg = $"ERROR: {ex.Message}";
                 Debug.WriteLine(ErroMsg);
             }
             return dicNodes;
         }
 
-        public string CriarPdf(Byte[] bytePDF, string strName)
+        public string CriarPdf(byte[] bytePDF, string strName)
         {
             string pdfPath = "";
             try
             {
-                Stream stFile;
                 ErroMsg = "";
                 //Get documents folder path
                 string documents = Android.OS.Environment.ExternalStorageDirectory.AbsolutePath;
                 pdfPath = Path.Combine(documents, strName);
 
-                if (File.Exists(pdfPath))
-                {
-                    File.Delete(pdfPath);
-                }
+                if (File.Exists(pdfPath)) File.Delete(pdfPath);
 
-                stFile = File.Create(pdfPath);
-                stFile.Write(bytePDF, 0, bytePDF.Length);
-                stFile.Close();
-                stFile.Dispose();
+                using (Stream stFile = File.Create(pdfPath))
+                {
+                    stFile.Write(bytePDF, 0, bytePDF.Length);
+                }
             }
             catch (Exception ex)
             {
-                ErroMsg = String.Format(@"ERROR: {0}", ex.Message);
+                ErroMsg = $"ERROR: {ex.Message}";
                 Debug.WriteLine(ErroMsg);
             }
 
@@ -101,11 +102,11 @@ namespace Mobile.Droid
                 intent.SetDataAndType(uri, "application/pdf");
                 intent.SetFlags(ActivityFlags.ClearWhenTaskReset | ActivityFlags.NewTask);
 
-                Xamarin.Forms.Forms.Context.StartActivity(intent);
+                Forms.Context.StartActivity(intent);
             }
             catch (Exception ex)
             {
-                ErroMsg = String.Format(@"ERROR: {0}", ex.Message);
+                ErroMsg = $"ERROR: {ex.Message}";
                 Debug.WriteLine(ErroMsg);
             }
         }

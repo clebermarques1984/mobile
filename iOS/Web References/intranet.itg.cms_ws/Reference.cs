@@ -53,13 +53,13 @@ namespace Mobile.iOS.intranet.itg.cms_ws {
         
         /// <remarks/>
         public Consultas() {
-            this.Url = "http://200.152.194.6:8888/consultas.asmx";
-            if ((this.IsLocalFileSystemWebService(this.Url) == true)) {
-                this.UseDefaultCredentials = true;
-                this.useDefaultCredentialsSetExplicitly = false;
+            Url = "http://200.152.194.6:8888/consultas.asmx";
+            if ((IsLocalFileSystemWebService(Url) == true)) {
+                UseDefaultCredentials = true;
+                useDefaultCredentialsSetExplicitly = false;
             }
             else {
-                this.useDefaultCredentialsSetExplicitly = true;
+                useDefaultCredentialsSetExplicitly = true;
             }
         }
         
@@ -68,9 +68,9 @@ namespace Mobile.iOS.intranet.itg.cms_ws {
                 return base.Url;
             }
             set {
-                if ((((this.IsLocalFileSystemWebService(base.Url) == true) 
-                            && (this.useDefaultCredentialsSetExplicitly == false)) 
-                            && (this.IsLocalFileSystemWebService(value) == false))) {
+                if ((((IsLocalFileSystemWebService(base.Url) == true) 
+                            && (useDefaultCredentialsSetExplicitly == false)) 
+                            && (IsLocalFileSystemWebService(value) == false))) {
                     base.UseDefaultCredentials = false;
                 }
                 base.Url = value;
@@ -83,7 +83,7 @@ namespace Mobile.iOS.intranet.itg.cms_ws {
             }
             set {
                 base.UseDefaultCredentials = value;
-                this.useDefaultCredentialsSetExplicitly = true;
+                useDefaultCredentialsSetExplicitly = true;
             }
         }
         
@@ -120,286 +120,286 @@ namespace Mobile.iOS.intranet.itg.cms_ws {
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ConsultaConsolidadaValoresPagar", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string ConsultaConsolidadaValoresPagar(string Parametros) {
-            object[] results = this.Invoke("ConsultaConsolidadaValoresPagar", new object[] {
+            object[] results = Invoke("ConsultaConsolidadaValoresPagar", new object[] {
                         Parametros});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
         public void ConsultaConsolidadaValoresPagarAsync(string Parametros) {
-            this.ConsultaConsolidadaValoresPagarAsync(Parametros, null);
+            ConsultaConsolidadaValoresPagarAsync(Parametros, null);
         }
         
         /// <remarks/>
         public void ConsultaConsolidadaValoresPagarAsync(string Parametros, object userState) {
-            if ((this.ConsultaConsolidadaValoresPagarOperationCompleted == null)) {
-                this.ConsultaConsolidadaValoresPagarOperationCompleted = new System.Threading.SendOrPostCallback(this.OnConsultaConsolidadaValoresPagarOperationCompleted);
+            if ((ConsultaConsolidadaValoresPagarOperationCompleted == null)) {
+                ConsultaConsolidadaValoresPagarOperationCompleted = new System.Threading.SendOrPostCallback(OnConsultaConsolidadaValoresPagarOperationCompleted);
             }
-            this.InvokeAsync("ConsultaConsolidadaValoresPagar", new object[] {
-                        Parametros}, this.ConsultaConsolidadaValoresPagarOperationCompleted, userState);
+            InvokeAsync("ConsultaConsolidadaValoresPagar", new object[] {
+                        Parametros}, ConsultaConsolidadaValoresPagarOperationCompleted, userState);
         }
         
         private void OnConsultaConsolidadaValoresPagarOperationCompleted(object arg) {
-            if ((this.ConsultaConsolidadaValoresPagarCompleted != null)) {
+            if ((ConsultaConsolidadaValoresPagarCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.ConsultaConsolidadaValoresPagarCompleted(this, new ConsultaConsolidadaValoresPagarCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                ConsultaConsolidadaValoresPagarCompleted(this, new ConsultaConsolidadaValoresPagarCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RelatorioComissaoPagarDetalhePDF", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string RelatorioComissaoPagarDetalhePDF(string Parametros) {
-            object[] results = this.Invoke("RelatorioComissaoPagarDetalhePDF", new object[] {
+            object[] results = Invoke("RelatorioComissaoPagarDetalhePDF", new object[] {
                         Parametros});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
         public void RelatorioComissaoPagarDetalhePDFAsync(string Parametros) {
-            this.RelatorioComissaoPagarDetalhePDFAsync(Parametros, null);
+            RelatorioComissaoPagarDetalhePDFAsync(Parametros, null);
         }
         
         /// <remarks/>
         public void RelatorioComissaoPagarDetalhePDFAsync(string Parametros, object userState) {
-            if ((this.RelatorioComissaoPagarDetalhePDFOperationCompleted == null)) {
-                this.RelatorioComissaoPagarDetalhePDFOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRelatorioComissaoPagarDetalhePDFOperationCompleted);
+            if ((RelatorioComissaoPagarDetalhePDFOperationCompleted == null)) {
+                RelatorioComissaoPagarDetalhePDFOperationCompleted = new System.Threading.SendOrPostCallback(OnRelatorioComissaoPagarDetalhePDFOperationCompleted);
             }
-            this.InvokeAsync("RelatorioComissaoPagarDetalhePDF", new object[] {
-                        Parametros}, this.RelatorioComissaoPagarDetalhePDFOperationCompleted, userState);
+            InvokeAsync("RelatorioComissaoPagarDetalhePDF", new object[] {
+                        Parametros}, RelatorioComissaoPagarDetalhePDFOperationCompleted, userState);
         }
         
         private void OnRelatorioComissaoPagarDetalhePDFOperationCompleted(object arg) {
-            if ((this.RelatorioComissaoPagarDetalhePDFCompleted != null)) {
+            if ((RelatorioComissaoPagarDetalhePDFCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.RelatorioComissaoPagarDetalhePDFCompleted(this, new RelatorioComissaoPagarDetalhePDFCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                RelatorioComissaoPagarDetalhePDFCompleted(this, new RelatorioComissaoPagarDetalhePDFCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ConsultaDetalheMovimentoPago", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string ConsultaDetalheMovimentoPago(string Parametros) {
-            object[] results = this.Invoke("ConsultaDetalheMovimentoPago", new object[] {
+            object[] results = Invoke("ConsultaDetalheMovimentoPago", new object[] {
                         Parametros});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
         public void ConsultaDetalheMovimentoPagoAsync(string Parametros) {
-            this.ConsultaDetalheMovimentoPagoAsync(Parametros, null);
+            ConsultaDetalheMovimentoPagoAsync(Parametros, null);
         }
         
         /// <remarks/>
         public void ConsultaDetalheMovimentoPagoAsync(string Parametros, object userState) {
-            if ((this.ConsultaDetalheMovimentoPagoOperationCompleted == null)) {
-                this.ConsultaDetalheMovimentoPagoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnConsultaDetalheMovimentoPagoOperationCompleted);
+            if ((ConsultaDetalheMovimentoPagoOperationCompleted == null)) {
+                ConsultaDetalheMovimentoPagoOperationCompleted = new System.Threading.SendOrPostCallback(OnConsultaDetalheMovimentoPagoOperationCompleted);
             }
-            this.InvokeAsync("ConsultaDetalheMovimentoPago", new object[] {
-                        Parametros}, this.ConsultaDetalheMovimentoPagoOperationCompleted, userState);
+            InvokeAsync("ConsultaDetalheMovimentoPago", new object[] {
+                        Parametros}, ConsultaDetalheMovimentoPagoOperationCompleted, userState);
         }
         
         private void OnConsultaDetalheMovimentoPagoOperationCompleted(object arg) {
-            if ((this.ConsultaDetalheMovimentoPagoCompleted != null)) {
+            if ((ConsultaDetalheMovimentoPagoCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.ConsultaDetalheMovimentoPagoCompleted(this, new ConsultaDetalheMovimentoPagoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                ConsultaDetalheMovimentoPagoCompleted(this, new ConsultaDetalheMovimentoPagoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ConsultaDominios", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string ConsultaDominios() {
-            object[] results = this.Invoke("ConsultaDominios", new object[0]);
+            object[] results = Invoke("ConsultaDominios", new object[0]);
             return ((string)(results[0]));
         }
         
         /// <remarks/>
         public void ConsultaDominiosAsync() {
-            this.ConsultaDominiosAsync(null);
+            ConsultaDominiosAsync(null);
         }
         
         /// <remarks/>
         public void ConsultaDominiosAsync(object userState) {
-            if ((this.ConsultaDominiosOperationCompleted == null)) {
-                this.ConsultaDominiosOperationCompleted = new System.Threading.SendOrPostCallback(this.OnConsultaDominiosOperationCompleted);
+            if ((ConsultaDominiosOperationCompleted == null)) {
+                ConsultaDominiosOperationCompleted = new System.Threading.SendOrPostCallback(OnConsultaDominiosOperationCompleted);
             }
-            this.InvokeAsync("ConsultaDominios", new object[0], this.ConsultaDominiosOperationCompleted, userState);
+            InvokeAsync("ConsultaDominios", new object[0], ConsultaDominiosOperationCompleted, userState);
         }
         
         private void OnConsultaDominiosOperationCompleted(object arg) {
-            if ((this.ConsultaDominiosCompleted != null)) {
+            if ((ConsultaDominiosCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.ConsultaDominiosCompleted(this, new ConsultaDominiosCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                ConsultaDominiosCompleted(this, new ConsultaDominiosCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ConsultaCNPJporNumSusep", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string ConsultaCNPJporNumSusep(string Parametros) {
-            object[] results = this.Invoke("ConsultaCNPJporNumSusep", new object[] {
+            object[] results = Invoke("ConsultaCNPJporNumSusep", new object[] {
                         Parametros});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
         public void ConsultaCNPJporNumSusepAsync(string Parametros) {
-            this.ConsultaCNPJporNumSusepAsync(Parametros, null);
+            ConsultaCNPJporNumSusepAsync(Parametros, null);
         }
         
         /// <remarks/>
         public void ConsultaCNPJporNumSusepAsync(string Parametros, object userState) {
-            if ((this.ConsultaCNPJporNumSusepOperationCompleted == null)) {
-                this.ConsultaCNPJporNumSusepOperationCompleted = new System.Threading.SendOrPostCallback(this.OnConsultaCNPJporNumSusepOperationCompleted);
+            if ((ConsultaCNPJporNumSusepOperationCompleted == null)) {
+                ConsultaCNPJporNumSusepOperationCompleted = new System.Threading.SendOrPostCallback(OnConsultaCNPJporNumSusepOperationCompleted);
             }
-            this.InvokeAsync("ConsultaCNPJporNumSusep", new object[] {
-                        Parametros}, this.ConsultaCNPJporNumSusepOperationCompleted, userState);
+            InvokeAsync("ConsultaCNPJporNumSusep", new object[] {
+                        Parametros}, ConsultaCNPJporNumSusepOperationCompleted, userState);
         }
         
         private void OnConsultaCNPJporNumSusepOperationCompleted(object arg) {
-            if ((this.ConsultaCNPJporNumSusepCompleted != null)) {
+            if ((ConsultaCNPJporNumSusepCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.ConsultaCNPJporNumSusepCompleted(this, new ConsultaCNPJporNumSusepCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                ConsultaCNPJporNumSusepCompleted(this, new ConsultaCNPJporNumSusepCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/AlertaPagamentos", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string AlertaPagamentos() {
-            object[] results = this.Invoke("AlertaPagamentos", new object[0]);
+            object[] results = Invoke("AlertaPagamentos", new object[0]);
             return ((string)(results[0]));
         }
         
         /// <remarks/>
         public void AlertaPagamentosAsync() {
-            this.AlertaPagamentosAsync(null);
+            AlertaPagamentosAsync(null);
         }
         
         /// <remarks/>
         public void AlertaPagamentosAsync(object userState) {
-            if ((this.AlertaPagamentosOperationCompleted == null)) {
-                this.AlertaPagamentosOperationCompleted = new System.Threading.SendOrPostCallback(this.OnAlertaPagamentosOperationCompleted);
+            if ((AlertaPagamentosOperationCompleted == null)) {
+                AlertaPagamentosOperationCompleted = new System.Threading.SendOrPostCallback(OnAlertaPagamentosOperationCompleted);
             }
-            this.InvokeAsync("AlertaPagamentos", new object[0], this.AlertaPagamentosOperationCompleted, userState);
+            InvokeAsync("AlertaPagamentos", new object[0], AlertaPagamentosOperationCompleted, userState);
         }
         
         private void OnAlertaPagamentosOperationCompleted(object arg) {
-            if ((this.AlertaPagamentosCompleted != null)) {
+            if ((AlertaPagamentosCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.AlertaPagamentosCompleted(this, new AlertaPagamentosCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                AlertaPagamentosCompleted(this, new AlertaPagamentosCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/MarcarAlertaPagamentos", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string MarcarAlertaPagamentos(string Parametros) {
-            object[] results = this.Invoke("MarcarAlertaPagamentos", new object[] {
+            object[] results = Invoke("MarcarAlertaPagamentos", new object[] {
                         Parametros});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
         public void MarcarAlertaPagamentosAsync(string Parametros) {
-            this.MarcarAlertaPagamentosAsync(Parametros, null);
+            MarcarAlertaPagamentosAsync(Parametros, null);
         }
         
         /// <remarks/>
         public void MarcarAlertaPagamentosAsync(string Parametros, object userState) {
-            if ((this.MarcarAlertaPagamentosOperationCompleted == null)) {
-                this.MarcarAlertaPagamentosOperationCompleted = new System.Threading.SendOrPostCallback(this.OnMarcarAlertaPagamentosOperationCompleted);
+            if ((MarcarAlertaPagamentosOperationCompleted == null)) {
+                MarcarAlertaPagamentosOperationCompleted = new System.Threading.SendOrPostCallback(OnMarcarAlertaPagamentosOperationCompleted);
             }
-            this.InvokeAsync("MarcarAlertaPagamentos", new object[] {
-                        Parametros}, this.MarcarAlertaPagamentosOperationCompleted, userState);
+            InvokeAsync("MarcarAlertaPagamentos", new object[] {
+                        Parametros}, MarcarAlertaPagamentosOperationCompleted, userState);
         }
         
         private void OnMarcarAlertaPagamentosOperationCompleted(object arg) {
-            if ((this.MarcarAlertaPagamentosCompleted != null)) {
+            if ((MarcarAlertaPagamentosCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.MarcarAlertaPagamentosCompleted(this, new MarcarAlertaPagamentosCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                MarcarAlertaPagamentosCompleted(this, new MarcarAlertaPagamentosCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RelatorioDemonstrativoComissaoPagoPDF", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string RelatorioDemonstrativoComissaoPagoPDF(string Parametros) {
-            object[] results = this.Invoke("RelatorioDemonstrativoComissaoPagoPDF", new object[] {
+            object[] results = Invoke("RelatorioDemonstrativoComissaoPagoPDF", new object[] {
                         Parametros});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
         public void RelatorioDemonstrativoComissaoPagoPDFAsync(string Parametros) {
-            this.RelatorioDemonstrativoComissaoPagoPDFAsync(Parametros, null);
+            RelatorioDemonstrativoComissaoPagoPDFAsync(Parametros, null);
         }
         
         /// <remarks/>
         public void RelatorioDemonstrativoComissaoPagoPDFAsync(string Parametros, object userState) {
-            if ((this.RelatorioDemonstrativoComissaoPagoPDFOperationCompleted == null)) {
-                this.RelatorioDemonstrativoComissaoPagoPDFOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRelatorioDemonstrativoComissaoPagoPDFOperationCompleted);
+            if ((RelatorioDemonstrativoComissaoPagoPDFOperationCompleted == null)) {
+                RelatorioDemonstrativoComissaoPagoPDFOperationCompleted = new System.Threading.SendOrPostCallback(OnRelatorioDemonstrativoComissaoPagoPDFOperationCompleted);
             }
-            this.InvokeAsync("RelatorioDemonstrativoComissaoPagoPDF", new object[] {
-                        Parametros}, this.RelatorioDemonstrativoComissaoPagoPDFOperationCompleted, userState);
+            InvokeAsync("RelatorioDemonstrativoComissaoPagoPDF", new object[] {
+                        Parametros}, RelatorioDemonstrativoComissaoPagoPDFOperationCompleted, userState);
         }
         
         private void OnRelatorioDemonstrativoComissaoPagoPDFOperationCompleted(object arg) {
-            if ((this.RelatorioDemonstrativoComissaoPagoPDFCompleted != null)) {
+            if ((RelatorioDemonstrativoComissaoPagoPDFCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.RelatorioDemonstrativoComissaoPagoPDFCompleted(this, new RelatorioDemonstrativoComissaoPagoPDFCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                RelatorioDemonstrativoComissaoPagoPDFCompleted(this, new RelatorioDemonstrativoComissaoPagoPDFCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ConsultaConsolidadaPagamentoPorData", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string ConsultaConsolidadaPagamentoPorData(string Parametros) {
-            object[] results = this.Invoke("ConsultaConsolidadaPagamentoPorData", new object[] {
+            object[] results = Invoke("ConsultaConsolidadaPagamentoPorData", new object[] {
                         Parametros});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
         public void ConsultaConsolidadaPagamentoPorDataAsync(string Parametros) {
-            this.ConsultaConsolidadaPagamentoPorDataAsync(Parametros, null);
+            ConsultaConsolidadaPagamentoPorDataAsync(Parametros, null);
         }
         
         /// <remarks/>
         public void ConsultaConsolidadaPagamentoPorDataAsync(string Parametros, object userState) {
-            if ((this.ConsultaConsolidadaPagamentoPorDataOperationCompleted == null)) {
-                this.ConsultaConsolidadaPagamentoPorDataOperationCompleted = new System.Threading.SendOrPostCallback(this.OnConsultaConsolidadaPagamentoPorDataOperationCompleted);
+            if ((ConsultaConsolidadaPagamentoPorDataOperationCompleted == null)) {
+                ConsultaConsolidadaPagamentoPorDataOperationCompleted = new System.Threading.SendOrPostCallback(OnConsultaConsolidadaPagamentoPorDataOperationCompleted);
             }
-            this.InvokeAsync("ConsultaConsolidadaPagamentoPorData", new object[] {
-                        Parametros}, this.ConsultaConsolidadaPagamentoPorDataOperationCompleted, userState);
+            InvokeAsync("ConsultaConsolidadaPagamentoPorData", new object[] {
+                        Parametros}, ConsultaConsolidadaPagamentoPorDataOperationCompleted, userState);
         }
         
         private void OnConsultaConsolidadaPagamentoPorDataOperationCompleted(object arg) {
-            if ((this.ConsultaConsolidadaPagamentoPorDataCompleted != null)) {
+            if ((ConsultaConsolidadaPagamentoPorDataCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.ConsultaConsolidadaPagamentoPorDataCompleted(this, new ConsultaConsolidadaPagamentoPorDataCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                ConsultaConsolidadaPagamentoPorDataCompleted(this, new ConsultaConsolidadaPagamentoPorDataCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/ConsultaDemonstrativoPago", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         public string ConsultaDemonstrativoPago(string Parametros) {
-            object[] results = this.Invoke("ConsultaDemonstrativoPago", new object[] {
+            object[] results = Invoke("ConsultaDemonstrativoPago", new object[] {
                         Parametros});
             return ((string)(results[0]));
         }
         
         /// <remarks/>
         public void ConsultaDemonstrativoPagoAsync(string Parametros) {
-            this.ConsultaDemonstrativoPagoAsync(Parametros, null);
+            ConsultaDemonstrativoPagoAsync(Parametros, null);
         }
         
         /// <remarks/>
         public void ConsultaDemonstrativoPagoAsync(string Parametros, object userState) {
-            if ((this.ConsultaDemonstrativoPagoOperationCompleted == null)) {
-                this.ConsultaDemonstrativoPagoOperationCompleted = new System.Threading.SendOrPostCallback(this.OnConsultaDemonstrativoPagoOperationCompleted);
+            if ((ConsultaDemonstrativoPagoOperationCompleted == null)) {
+                ConsultaDemonstrativoPagoOperationCompleted = new System.Threading.SendOrPostCallback(OnConsultaDemonstrativoPagoOperationCompleted);
             }
-            this.InvokeAsync("ConsultaDemonstrativoPago", new object[] {
-                        Parametros}, this.ConsultaDemonstrativoPagoOperationCompleted, userState);
+            InvokeAsync("ConsultaDemonstrativoPago", new object[] {
+                        Parametros}, ConsultaDemonstrativoPagoOperationCompleted, userState);
         }
         
         private void OnConsultaDemonstrativoPagoOperationCompleted(object arg) {
-            if ((this.ConsultaDemonstrativoPagoCompleted != null)) {
+            if ((ConsultaDemonstrativoPagoCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.ConsultaDemonstrativoPagoCompleted(this, new ConsultaDemonstrativoPagoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                ConsultaDemonstrativoPagoCompleted(this, new ConsultaDemonstrativoPagoCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -442,8 +442,8 @@ namespace Mobile.iOS.intranet.itg.cms_ws {
         /// <remarks/>
         public string Result {
             get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                RaiseExceptionIfNecessary();
+                return ((string)(results[0]));
             }
         }
     }
@@ -468,8 +468,8 @@ namespace Mobile.iOS.intranet.itg.cms_ws {
         /// <remarks/>
         public string Result {
             get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                RaiseExceptionIfNecessary();
+                return ((string)(results[0]));
             }
         }
     }
@@ -494,8 +494,8 @@ namespace Mobile.iOS.intranet.itg.cms_ws {
         /// <remarks/>
         public string Result {
             get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                RaiseExceptionIfNecessary();
+                return ((string)(results[0]));
             }
         }
     }
@@ -520,8 +520,8 @@ namespace Mobile.iOS.intranet.itg.cms_ws {
         /// <remarks/>
         public string Result {
             get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                RaiseExceptionIfNecessary();
+                return ((string)(results[0]));
             }
         }
     }
@@ -546,8 +546,8 @@ namespace Mobile.iOS.intranet.itg.cms_ws {
         /// <remarks/>
         public string Result {
             get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                RaiseExceptionIfNecessary();
+                return ((string)(results[0]));
             }
         }
     }
@@ -572,8 +572,8 @@ namespace Mobile.iOS.intranet.itg.cms_ws {
         /// <remarks/>
         public string Result {
             get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                RaiseExceptionIfNecessary();
+                return ((string)(results[0]));
             }
         }
     }
@@ -598,8 +598,8 @@ namespace Mobile.iOS.intranet.itg.cms_ws {
         /// <remarks/>
         public string Result {
             get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                RaiseExceptionIfNecessary();
+                return ((string)(results[0]));
             }
         }
     }
@@ -624,8 +624,8 @@ namespace Mobile.iOS.intranet.itg.cms_ws {
         /// <remarks/>
         public string Result {
             get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                RaiseExceptionIfNecessary();
+                return ((string)(results[0]));
             }
         }
     }
@@ -650,8 +650,8 @@ namespace Mobile.iOS.intranet.itg.cms_ws {
         /// <remarks/>
         public string Result {
             get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                RaiseExceptionIfNecessary();
+                return ((string)(results[0]));
             }
         }
     }
@@ -676,8 +676,8 @@ namespace Mobile.iOS.intranet.itg.cms_ws {
         /// <remarks/>
         public string Result {
             get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
+                RaiseExceptionIfNecessary();
+                return ((string)(results[0]));
             }
         }
     }

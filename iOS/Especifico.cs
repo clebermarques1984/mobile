@@ -29,7 +29,12 @@ namespace Mobile.iOS
 
         public string ErroMsg { get; set; }
 
-		public Dictionary<string, string> GetXmlRetornoWS(string xmlString, Metodo valor, bool getInnerText)
+        public bool HasError
+        {
+            get { return !string.IsNullOrEmpty(ErroMsg); }
+        }
+
+        public Dictionary<string, string> GetXmlRetornoWS(string xmlString, Metodo valor, bool getInnerText)
 		{
 			try
 			{
@@ -56,36 +61,34 @@ namespace Mobile.iOS
 			}
 			catch (Exception ex)
 			{
-				ErroMsg = String.Format(@"ERROR: {0}", ex.Message);
+				ErroMsg = $"ERROR: {ex.Message}";
 				Debug.WriteLine(ErroMsg);
 			}
 			return dicNodes;
 		}
 
-		public string CriarPdf(Byte[] bytePDF, string strName)
+		public string CriarPdf(byte[] bytePDF, string strName)
 		{
 			string pdfPath = "";
 			try
 			{
-				Stream stFile;
 				ErroMsg = "";
-				//Get documents folder path
-				string documents = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
-				pdfPath = Path.Combine(documents, strName);
+                //Get documents folder path
 
-				if (File.Exists(pdfPath))
-				{
-					File.Delete(pdfPath);
-				}
+                string documents = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
-				stFile = File.Create(pdfPath);
-				stFile.Write(bytePDF, 0, bytePDF.Length);
-				stFile.Close();
-				stFile.Dispose();
+                pdfPath = Path.Combine(documents, strName);
+
+				if (File.Exists(pdfPath)) File.Delete(pdfPath);
+
+                using (Stream stFile = File.Create(pdfPath))
+                {
+                    stFile.Write(bytePDF, 0, bytePDF.Length);
+                }
 			}
 			catch (Exception ex)
 			{
-				ErroMsg = String.Format(@"ERROR: {0}", ex.Message);
+				ErroMsg = $"ERROR: {ex.Message}";
 				Debug.WriteLine(ErroMsg);
 			}
 
@@ -111,7 +114,7 @@ namespace Mobile.iOS
 			}
 			catch (Exception ex)
 			{
-				ErroMsg = String.Format(@"ERROR: {0}", ex.Message);
+				ErroMsg = $"ERROR: {ex.Message}";
 				Debug.WriteLine(ErroMsg);
 			}
 		}

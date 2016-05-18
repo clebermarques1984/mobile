@@ -1,30 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace Mobile.ViewModels
 {
     class HomeViewModel : BaseViewModel
     {
-        public ICommand ConsultaCommand { get; set; }
-        public ICommand ExitCommand { get; set; }
+        public ICommand ConsultaCommand { get; }
+        public ICommand ExitCommand { get; }
 
         private readonly Services.INavigationService navigationService;
 
         public HomeViewModel()
         {
-            this.ConsultaCommand = new Command(this.Consulta);
+            ConsultaCommand = new Command(Consulta);
+            navigationService = DependencyService.Get<Services.INavigationService>();
             //this.ExitCommand = new Command(this.Sair);
-            this.navigationService = DependencyService.Get<Services.INavigationService>();
         }
 
         private async void Consulta()
         {
-            await this.navigationService.NavigateToConsulta();
+            await navigationService.NavigateToConsulta();
         }
 
         //private async void Sair()

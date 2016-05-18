@@ -124,7 +124,7 @@ namespace Mobile.Core
                 pdfString = dicNodes["documento"];
             }
 
-            Byte[] bytePDF = Convert.FromBase64String(pdfString);
+            byte[] bytePDF = Convert.FromBase64String(pdfString);
 
             string pdfPath = obj.CriarPdf(bytePDF, "relatorio.pdf");
 

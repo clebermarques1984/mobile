@@ -47,7 +47,7 @@ namespace Mobile.Core
 			string xmlString = "";
 
 			#region How to load an XML file embedded resource
-			var assembly = this.GetType().GetTypeInfo().Assembly;
+			var assembly = GetType().GetTypeInfo().Assembly;
 
 			Stream stream = assembly.GetManifestResourceStream(Path);
 

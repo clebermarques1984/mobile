@@ -1,15 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Mobile.ViewModels;
 
 namespace Mobile.Views
 {
-	public partial class ListaView : ContentPage
+    public partial class ListaView : ContentPage
 	{
-		public ListaView ()
+        public ListaView()
+            :this(new ListaViewModel())
+        {
+
+        }
+		public ListaView (ListaViewModel viewModel)
 		{
-			BindingContext = new ListaViewModel ();
+			BindingContext = viewModel;
 			InitializeComponent ();
 		}
 	}

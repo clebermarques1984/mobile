@@ -13,7 +13,7 @@
     <Label Text="Data Final" HorizontalOptions="Center" FontSize="Medium" />
     <DatePicker Format="dd/MM/yyyy"
                 Date = "{Binding DataFinal, Mode=TwoWay}" />
-    <Button Text="Consultar"
+    <Button Text="Listar"
             Command="{Binding ListaCommand}"></Button>
     <Button Text="Abrir Pdf"
             Command="{Binding AbrirPdfCommand}"></Button>

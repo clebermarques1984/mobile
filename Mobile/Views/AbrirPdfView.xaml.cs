@@ -1,15 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Xamarin.Forms;
 using Mobile.ViewModels;
-using Xamarin.Forms;
 
 namespace Mobile.Views
 {
-	public partial class AbrirPdfView : ContentPage
+    public partial class AbrirPdfView : ContentPage
 	{
-		public AbrirPdfView ()
+        public AbrirPdfView()
+            : this(new AbrirPdfViewModel())
+        {
+
+        }
+		public AbrirPdfView (AbrirPdfViewModel viewModel)
 		{
-            BindingContext = new AbrirPdfViewModel ();
+            BindingContext = viewModel;
 			InitializeComponent ();
 		}
 	}

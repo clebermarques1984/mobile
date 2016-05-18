@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Mobile.ViewModels;
 
 namespace Mobile.Views
 {
-	public partial class ConsultaView : ContentPage
+    public partial class ConsultaView : ContentPage
 	{
 		public ConsultaView ()
 		{

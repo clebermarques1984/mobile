@@ -1,11 +1,10 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Xamarin.Forms;
 using Mobile.ViewModels.Services;
 
 namespace Mobile.Views.Services
 {
-	public class NavigationService : INavigationService 
+    public class NavigationService : INavigationService 
 	{
 		#region INavigationService implementation
 
